@@ -42,11 +42,11 @@ Add CliBundle to the `registerBundles()` method of your application kernel:
 ## edit app/console
    
    change app/console to load the FRNK\ShellExtensionBundle\Application instead of the standart Symfony one.
-
-   ....
+   
+   `....
    //use Symfony\Bundle\FrameworkBundle\Console\Application;
    use FRNK\ShellExtensionBundle\Console\Application;
    use Symfony\Component\Console\Input\ArgvInput;
-   ....
+   ....`
 
 
