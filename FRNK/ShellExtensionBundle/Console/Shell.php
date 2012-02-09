@@ -254,7 +254,27 @@ class Shell extends BaseShell {
      */
     protected function getHeader() {
 
-        return parent::getHeader() . "(ext)";
+        return <<<EOF
+<info>
+      _____                  __                  ___
+     / ____|                / _|                |__ \
+    | (___  _   _ _ __ ___ | |_ ___  _ __  _   _   ) |
+     \___ \| | | | '_ ` _ \|  _/ _ \| '_ \| | | | / /
+     ____) | |_| | | | | | | || (_) | | | | |_| |/ /_
+    |_____/ \__, |_| |_| |_|_| \___/|_| |_|\__, |____|
+             __/ |                          __/ |
+            |___/                          |___/
+
+</info>
+Welcome to the <info>{$this->application->getName()}</info> shell (<comment>{$this->application->getVersion()}</comment>).
+
+At the prompt, type <comment>help</comment> for some help,
+or <comment>list</comment> to get a list available commands.
+
+To exit the shell, type <comment>quit</comment>.
+
+EOF;
+
     }
 
 }
