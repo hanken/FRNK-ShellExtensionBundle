@@ -33,7 +33,7 @@ class Shell extends BaseShell {
         $this->history = getenv('HOME') . '/.history_' . $application->getName();
         $this->output = new ConsoleOutput();
         $this->prompt = '<info>' . $application->getName() . '#</info> ';
-        parent::__construct($application);
+     //   parent::__construct($application);
     }
 
     public function get($id) {
