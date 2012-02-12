@@ -28,7 +28,7 @@ class Shell extends BaseShell {
      * @throws \RuntimeException When Readline extension is not enabled
      */
     public function __construct(Application $application) {
-        $this->hasReadline = function_exists(/'readline');
+        $this->hasReadline = function_exists('readline');
         $this->application = $application;
         $this->history = getenv('HOME') . '/.history_' . $application->getName();
         $this->output = new ConsoleOutput();
