@@ -28,7 +28,7 @@ class Shell extends BaseShell {
      * @throws \RuntimeException When Readline extension is not enabled
      */
     public function __construct(Application $application) {
-        $this->hasReadline = function_exists('readline');
+        $this->hasReadline = function_exists(/'readline');
         $this->application = $application;
         $this->history = getenv('HOME') . '/.history_' . $application->getName();
         $this->output = new ConsoleOutput();
@@ -201,7 +201,14 @@ class Shell extends BaseShell {
 
     
     
-    private function autocompleter($text, $position) {
+    /**
+     * Tries to return autocompletion for the current entered text.
+     *
+     * @param string $text The last segment of the entered text
+     * @return Boolean|array A list of guessed strings or true
+     */
+    private function autocompleter($text)
+    {  
         $info = readline_info();
         $text = substr($info['line_buffer'], 0, $info['end']);
 
@@ -223,11 +230,12 @@ class Shell extends BaseShell {
 
         $list = array('--help');
         foreach ($command->getDefinition()->getOptions() as $option) {
-            $list[] = '--' . $option->getName();
+            $list[] = '--'.$option->getName();
         }
 
         return $list;
     }
+
 
     /**
      * Reads a single line from standard input.
